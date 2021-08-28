@@ -1,12 +1,8 @@
 import React from 'react';
-import {SafeAreaView, View, Text} from 'react-native';
+import Schedule from './Schedule';
 
 const App = () => {
-  return (
-    <SafeAreaView>
-      <Text>Hi</Text>
-    </SafeAreaView>
-  );
+  return <Schedule />;
 };
 
 export default App;
