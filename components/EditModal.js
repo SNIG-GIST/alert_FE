@@ -14,7 +14,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const BottomSheet = props => {
+const EditModal = props => {
   const {modalVisible, setModalVisible} = props;
   const screenHeight = Dimensions.get('screen').height;
   const panY = useRef(new Animated.Value(screenHeight)).current;
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BottomSheet;
+export default EditModal;
