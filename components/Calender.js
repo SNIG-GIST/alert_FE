@@ -13,11 +13,22 @@ const Calender = () => {
 
   const events_data = [
     {
-      title: '기업',
+      title: '기업과 사회',
       startTime: genTimeBlock('MON', 10),
       endTime: genTimeBlock('MON', 11, 30),
-      location: 'HI',
-      extra_description: ['Daurial', 'Shit'],
+      location: '장진호T',
+    },
+    {
+      title: '기업과 사회',
+      startTime: genTimeBlock('tue', 10),
+      endTime: genTimeBlock('tue', 11, 30),
+      location: '장진호T',
+    },
+    {
+      title: '기업',
+      startTime: genTimeBlock('WED', 10),
+      endTime: genTimeBlock('WED', 11, 30),
+      location: '장진호T',
     },
   ];
 
@@ -28,7 +39,7 @@ const Calender = () => {
         pivotTime={9}
         pivotEndTime={20}
         pivotDate={pivotDate}
-        numberOfDays={numOfDays}
+        nDays={numOfDays}
         onEventPress={onEventPress}
         headerStyle={styles.headerStyle}
         formatDateHeader="dddd"
@@ -40,12 +51,15 @@ const Calender = () => {
 
 const styles = StyleSheet.create({
   calenderWrapper: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#141414',
+    marginTop: '5%',
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
     width: '100%',
-    height: '70%',
+    height: '60%',
   },
   headerStyle: {
-    backgroundColor: '#81E1B8',
+    backgroundColor: '#141414',
   },
 });
 

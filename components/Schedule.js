@@ -6,7 +6,6 @@ import {
   SafeAreaView,
   View,
   Text,
-  Image,
   TouchableOpacity,
 } from 'react-native';
 
@@ -14,10 +13,7 @@ const Schedule = () => {
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.wrapper}>
-        <Image
-          source={require('../screenshot.png')}
-          style={styles.screenshotImage}
-        />
+        <Calender />
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
@@ -76,7 +72,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
   },
   memoWrapper: {
-    marginTop: '10%',
+    marginTop: '3%',
     width: '100%',
   },
   memoTitle: {

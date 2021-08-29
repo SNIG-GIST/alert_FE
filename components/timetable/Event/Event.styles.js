@@ -4,13 +4,15 @@ const styles = StyleSheet.create({
   item: {
     // alignItems: 'center',
     position: 'absolute',
-    paddingVertical: 2,
-    paddingHorizontal: 2,
-    borderRadius: 7,
+    paddingVertical: 4,
+    paddingHorizontal: 3,
+    borderRadius: 2,
+    borderColor: 'transparent',
     flex: 1,
   },
   title: {
     color: '#322425',
+    fontWeight: '600',
     textAlign: 'left',
     fontSize: 13,
   },
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
     fontSize: 9,
   },
   location: {
-    color: '#777',
+    color: '#555',
     textAlign: 'left',
     paddingTop: 4,
     paddingBottom: 2,

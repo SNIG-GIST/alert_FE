@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 12,
+    color: '#919191',
     textAlign: 'center',
   },
   timeColumn: {

@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {GREY_COLOR} from '../Events/Events.styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
   title: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: '#F8F8F8',
+    borderColor: GREY_COLOR,
     borderTopWidth: 1,
     width: 26,
   },
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: '#F8F8F8',
+    borderColor: GREY_COLOR,
     borderTopWidth: 1,
     borderLeftWidth: 1,
   },
