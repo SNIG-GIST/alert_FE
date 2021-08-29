@@ -14,7 +14,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const BottomSheet = props => {
+const EditModal = props => {
   const {modalVisible, setModalVisible} = props;
   const screenHeight = Dimensions.get('screen').height;
   const panY = useRef(new Animated.Value(screenHeight)).current;
@@ -67,6 +67,9 @@ const BottomSheet = props => {
   return (
     <Modal visible={modalVisible} transparent statusBarTranslucent>
       <View style={styles.overlay}>
+        <TouchableWithoutFeedback onPress={closeModal}>
+          <View style={styles.background} />
+        </TouchableWithoutFeedback>
         <Animated.View
           style={{
             ...styles.bottomSheetContainer,
@@ -83,10 +86,16 @@ const BottomSheet = props => {
             </TouchableOpacity>
           </LinearGradient>
           <ScrollView>
-            <MyLecture />
-            <MyLecture />
-            <MyLecture />
-            <MyLecture />
+            <TouchableOpacity>
+              <TouchableWithoutFeedback>
+                <View>
+                  <MyLecture />
+                  <MyLecture />
+                  <MyLecture />
+                  <MyLecture />
+                </View>
+              </TouchableWithoutFeedback>
+            </TouchableOpacity>
           </ScrollView>
         </Animated.View>
       </View>
@@ -131,4 +140,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BottomSheet;
+export default EditModal;

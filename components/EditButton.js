@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
-import BottomSheet from './BottomSheet';
+import EditModal from './EditModal';
 
 const EditButton = props => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -15,7 +15,7 @@ const EditButton = props => {
           edit
         </Text>
       </TouchableOpacity>
-      <BottomSheet
+      <EditModal
         modalVisible={modalVisible}
         setModalVisible={setModalVisible}
       />
