@@ -1,6 +1,7 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Calender from './Calender';
+import EditButton from './EditButton';
 import {
   StyleSheet,
   SafeAreaView,
@@ -8,6 +9,8 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+
+
 
 const Schedule = () => {
   return (
@@ -19,9 +22,7 @@ const Schedule = () => {
           end={{x: 1, y: 0}}
           colors={['#6E52FC', '#5597F8']}
           style={styles.linearGradient}>
-          <TouchableOpacity>
-            <Text style={styles.editButtonText}>edit</Text>
-          </TouchableOpacity>
+          <EditButton />
         </LinearGradient>
         <View style={styles.memoWrapper}>
           <Text style={styles.memoTitle}>Memo</Text>
