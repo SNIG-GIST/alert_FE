@@ -14,7 +14,10 @@ const Schedule = () => {
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.wrapper}>
-        <Calender style={styles.screenshotImage} />
+        <Image
+          source={require('../screenshot.png')}
+          style={styles.screenshotImage}
+        />
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}

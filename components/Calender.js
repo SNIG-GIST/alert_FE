@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import TimeTableView, {genTimeBlock} from 'react-native-timetable';
+import React from 'react';
 import {StyleSheet, View, Text, TouchableOpacity, Alert} from 'react-native';
+import TimeTableView from './timetable/TimeTable/TimeTableView';
+import {genTimeBlock} from './timetable/utils';
 
 const Calender = () => {
   const numOfDays = 5;
@@ -12,10 +13,11 @@ const Calender = () => {
 
   const events_data = [
     {
-      title: 'Something',
+      title: '기업',
       startTime: genTimeBlock('MON', 10),
-      endTime: genTimeBlock('MON', 12),
+      endTime: genTimeBlock('MON', 11, 30),
       location: 'HI',
+      extra_description: ['Daurial', 'Shit'],
     },
   ];
 
@@ -26,7 +28,7 @@ const Calender = () => {
         pivotTime={9}
         pivotEndTime={20}
         pivotDate={pivotDate}
-        nDays={numOfDays}
+        numberOfDays={numOfDays}
         onEventPress={onEventPress}
         headerStyle={styles.headerStyle}
         formatDateHeader="dddd"
