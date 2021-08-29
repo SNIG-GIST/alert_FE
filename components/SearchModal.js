@@ -1,7 +1,6 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import MyLecture from './MyLecture';
-import SearchModal from './SearchModal';
 import {
   View,
   ScrollView,
@@ -23,11 +22,6 @@ const EditModal = props => {
     inputRange: [-1, 0, 1],
     outputRange: [0, 0, 1],
   });
-
-  const [searchmodalVisible, setSearchModalVisible] = useState(false);
-  const pressButton = () => {
-    setSearchModalVisible(true);
-  };
 
   const resetBottomSheet = Animated.timing(panY, {
     toValue: 0,
@@ -94,23 +88,13 @@ const EditModal = props => {
             colors={['#6E52FC', '#5597F8']}
             style={styles.linearGradient}>
             <TouchableOpacity>
-              <Text style={styles.editButtonText} onPress={pressButton}>
-                search
-              </Text>
+              <Text style={styles.editButtonText}>search</Text>
             </TouchableOpacity>
           </LinearGradient>
-          <SearchModal
-            modalVisible={searchmodalVisible}
-            setModalVisible={setSearchModalVisible}
-          />
           <ScrollView>
             <TouchableOpacity>
               <TouchableWithoutFeedback>
                 <View>
-                  <MyLecture />
-                  <MyLecture />
-                  <MyLecture />
-                  <MyLecture />
                   <MyLecture />
                 </View>
               </TouchableWithoutFeedback>
@@ -132,7 +116,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bottomSheetContainer: {
-    height: 250,
+    height: '70%',
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#2F3C51',
@@ -146,7 +130,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     marginTop: '3.5%',
     width: '28%',
-    height: '13%',
+    height: '7%',
     marginRight: '3.5%',
     marginBottom: '2.5%',
   },
