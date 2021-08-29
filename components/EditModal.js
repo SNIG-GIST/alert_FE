@@ -65,7 +65,13 @@ const EditModal = props => {
   };
 
   return (
-    <Modal visible={modalVisible} transparent statusBarTranslucent>
+    <Modal
+      visible={modalVisible}
+      transparent
+      statusBarTranslucent
+      onRequestClose={() => {
+        setModalVisible(false);
+      }}>
       <View style={styles.overlay}>
         <TouchableWithoutFeedback onPress={closeModal}>
           <View style={styles.background} />
