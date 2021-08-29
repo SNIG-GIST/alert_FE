@@ -1,6 +1,7 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import MyLecture from './MyLecture';
+import SearchModal from './SearchModal';
 import {
   View,
   ScrollView,
@@ -14,7 +15,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const BottomSheet = props => {
+const EditModal = props => {
   const {modalVisible, setModalVisible} = props;
   const screenHeight = Dimensions.get('screen').height;
   const panY = useRef(new Animated.Value(screenHeight)).current;
@@ -22,6 +23,11 @@ const BottomSheet = props => {
     inputRange: [-1, 0, 1],
     outputRange: [0, 0, 1],
   });
+
+  const [searchmodalVisible, setSearchModalVisible] = useState(false);
+  const pressButton = () => {
+    setSearchModalVisible(true);
+  };
 
   const resetBottomSheet = Animated.timing(panY, {
     toValue: 0,
@@ -65,8 +71,17 @@ const BottomSheet = props => {
   };
 
   return (
-    <Modal visible={modalVisible} transparent statusBarTranslucent>
+    <Modal
+      visible={modalVisible}
+      transparent
+      statusBarTranslucent
+      onRequestClose={() => {
+        setModalVisible(false);
+      }}>
       <View style={styles.overlay}>
+        <TouchableWithoutFeedback onPress={closeModal}>
+          <View style={styles.background} />
+        </TouchableWithoutFeedback>
         <Animated.View
           style={{
             ...styles.bottomSheetContainer,
@@ -79,14 +94,27 @@ const BottomSheet = props => {
             colors={['#6E52FC', '#5597F8']}
             style={styles.linearGradient}>
             <TouchableOpacity>
-              <Text style={styles.editButtonText}>search</Text>
+              <Text style={styles.editButtonText} onPress={pressButton}>
+                search
+              </Text>
             </TouchableOpacity>
           </LinearGradient>
+          <SearchModal
+            modalVisible={searchmodalVisible}
+            setModalVisible={setSearchModalVisible}
+          />
           <ScrollView>
-            <MyLecture />
-            <MyLecture />
-            <MyLecture />
-            <MyLecture />
+            <TouchableOpacity>
+              <TouchableWithoutFeedback>
+                <View>
+                  <MyLecture />
+                  <MyLecture />
+                  <MyLecture />
+                  <MyLecture />
+                  <MyLecture />
+                </View>
+              </TouchableWithoutFeedback>
+            </TouchableOpacity>
           </ScrollView>
         </Animated.View>
       </View>
@@ -98,7 +126,7 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
   },
   background: {
     flex: 1,
@@ -131,4 +159,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BottomSheet;
+export default EditModal;

@@ -3,16 +3,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then();
-import Schedule from './pages/Schedule';
+import Schedule from './pages/Schedule.js';
+import Lecture from './pages/Lecture.js';
+import Profile from './pages/Profile.js';
 import {SafeAreaView, View, Text, Image} from 'react-native';
 
-const LectureScreen = () => {
-  return (
-    <SafeAreaView>
-      <Text>This is Lecture Page</Text>
-    </SafeAreaView>
-  );
-};
+const Tab = createBottomTabNavigator();
+
 const ProfileScreen = () => {
   return (
     <View>
@@ -20,7 +17,13 @@ const ProfileScreen = () => {
     </View>
   );
 };
-const Tab = createBottomTabNavigator();
+const LectureScreen = () => {
+  return (
+    <SafeAreaView>
+      <Text>This is Lecture Page</Text>
+    </SafeAreaView>
+  );
+};
 
 const App = () => {
   return (
