@@ -67,6 +67,9 @@ const BottomSheet = props => {
   return (
     <Modal visible={modalVisible} transparent statusBarTranslucent>
       <View style={styles.overlay}>
+        <TouchableWithoutFeedback onPress={closeModal}>
+          <View style={styles.background} />
+        </TouchableWithoutFeedback>
         <Animated.View
           style={{
             ...styles.bottomSheetContainer,
