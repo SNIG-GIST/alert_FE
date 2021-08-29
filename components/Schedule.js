@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
+import EditButton from './EditButton';
 import {bold, red} from 'chalk';
 
 const Schedule = () => {
@@ -16,17 +17,16 @@ const Schedule = () => {
       <SafeAreaView style={styles.wrapper}>
         <Image
           style={styles.screenshotImage}
-          source={require('./screenshot.png')}
+          source={require('../screenshot.png')}
         />
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
           colors={['#6E52FC', '#5597F8']}
           style={styles.linearGradient}>
-          <TouchableOpacity>
-            <Text style={styles.editButtonText}>edit</Text>
-          </TouchableOpacity>
+          <EditButton />
         </LinearGradient>
+
         <View style={styles.memoWrapper}>
           <Text style={styles.memoTitle}>Memo</Text>
           <View style={styles.memoBar} />
