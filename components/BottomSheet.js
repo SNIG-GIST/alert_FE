@@ -83,10 +83,16 @@ const BottomSheet = props => {
             </TouchableOpacity>
           </LinearGradient>
           <ScrollView>
-            <MyLecture />
-            <MyLecture />
-            <MyLecture />
-            <MyLecture />
+            <TouchableOpacity>
+              <TouchableWithoutFeedback>
+                <View>
+                  <MyLecture />
+                  <MyLecture />
+                  <MyLecture />
+                  <MyLecture />
+                </View>
+              </TouchableWithoutFeedback>
+            </TouchableOpacity>
           </ScrollView>
         </Animated.View>
       </View>
