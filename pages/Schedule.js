@@ -1,7 +1,7 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import Calender from './Calender';
-import EditButton from './EditButton';
+import Calender from '../components/Calender';
+import EditButton from '../components/EditButton';
 import {
   StyleSheet,
   SafeAreaView,
@@ -9,8 +9,6 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-
-
 
 const Schedule = () => {
   return (

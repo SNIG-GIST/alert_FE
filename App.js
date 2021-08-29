@@ -1,6 +1,7 @@
 import React from 'react';
-import Schedule from './components/Schedule';
-
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Schedule from './pages/Schedule';
 
 const App = () => {
   return <Schedule />;
