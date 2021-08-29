@@ -1,24 +1,22 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import Calender from './Calender';
+import EditButton from './EditButton';
 import {
   StyleSheet,
   SafeAreaView,
   View,
   Text,
-  Image,
   TouchableOpacity,
 } from 'react-native';
-import EditButton from './EditButton';
-import {bold, red} from 'chalk';
+
+
 
 const Schedule = () => {
   return (
     <View style={styles.background}>
       <SafeAreaView style={styles.wrapper}>
-        <Image
-          style={styles.screenshotImage}
-          source={require('../screenshot.png')}
-        />
+        <Calender />
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
@@ -26,7 +24,6 @@ const Schedule = () => {
           style={styles.linearGradient}>
           <EditButton />
         </LinearGradient>
-
         <View style={styles.memoWrapper}>
           <Text style={styles.memoTitle}>Memo</Text>
           <View style={styles.memoBar} />
@@ -59,12 +56,6 @@ const styles = StyleSheet.create({
     width: '82.7%',
     height: '100%',
   },
-  screenshotImage: {
-    borderRadius: 20,
-    marginTop: '2.333%',
-    width: '100%',
-    height: '60%',
-  },
   linearGradient: {
     alignSelf: 'flex-end',
     justifyContent: 'center',
@@ -82,7 +73,7 @@ const styles = StyleSheet.create({
     fontStyle: 'normal',
   },
   memoWrapper: {
-    marginTop: '10%',
+    marginTop: '3%',
     width: '100%',
   },
   memoTitle: {
