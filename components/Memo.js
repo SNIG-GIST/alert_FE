@@ -1,56 +1,84 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, Text, Keyboard, TextInput} from 'react-native';
+import React, {useState, useRef} from 'react';
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 
 const Memo = () => {
-  const [keyboard, setKeyboard] = useState(false);
-  const onPressEnter = e => {
-    if (e.nativeEvent.key === 'Enter') {
-      Keyboard.dismiss();
-      setKeyboard(false);
-    }
+  const onPressEnter = () => {
+    addMemo();
   };
-  const onFocusTextField = () => {
-    setKeyboard(true);
-  };
-
-  const MemoInput = () => {
+  const MemoList = ({memo, removeMemo}) => {
     return (
-      <View style={styles.memoAddButton}>
-        <TextInput
-          style={styles.memoAddButtonText}
-          placeholder="+ 새로운 메모"
-          placeholderTextColor="#52A0F8"
-          autoCorrect={true}
-          onFocus={onFocusTextField}
-          onKeyPress={onPressEnter}
-        />
-      </View>
+      <TouchableOpacity
+        style={styles.memoContent}
+        onLongPress={() => removeMemo(memo.id)}>
+        <Text style={styles.memoContentText}>{memo.text}</Text>
+      </TouchableOpacity>
     );
   };
 
-  const [memo, setMemo] = useState([
-    '20시까지 에세이 과제',
-    '15시까지 화학 과제',
+  const [memos, setMemos] = useState([
+    {
+      id: 1,
+      text: '에세이 과제',
+    },
+    {
+      id: 2,
+      text: '화학 과제',
+    },
   ]);
-
-  const MemoList = ({memo, index}) => {
-    return (
-      <View style={styles.memoContent}>
-        <Text style={styles.memoContentText}>{memo[index]}</Text>
-      </View>
-    );
+  const nextId = useRef(2);
+  const [newMemo, setNewMemo] = useState('');
+  const addMemo = () => {
+    nextId.current += 1;
+    const memo = {
+      ...memos,
+      id: nextId.current,
+      text: newMemo,
+    };
+    setMemos(memos.concat(memo));
+    setNewMemo('');
+  };
+  const memoHandler = text => {
+    setNewMemo(text);
+  };
+  const removeMemo = id => {
+    setMemos(memos.filter(memo => memo.id !== id));
+    nextId.current -= 1;
   };
 
   return (
     <View style={styles.memoWrapper}>
       <Text style={styles.memoTitle}>Memo</Text>
       <View style={styles.memoBar} />
-      <View style={styles.memoContentWrapper}>
-        {memo.map((list, index) => (
-          <MemoList memo={memo} index={index} key={index} />
-        ))}
-        <MemoInput />
-      </View>
+      <ScrollView style={styles.memoContentWrapper}>
+        <View style={styles.memoContentReverse}>
+          {memos.map((memo, index) => (
+            <MemoList
+              memo={memo}
+              removeMemo={removeMemo}
+              index={index}
+              key={index}
+            />
+          ))}
+          <View style={styles.memoAddButton}>
+            <TextInput
+              style={styles.memoAddButtonText}
+              placeholder="+ 새로운 메모"
+              placeholderTextColor="#52A0F8"
+              autoCorrect={false}
+              onSubmitEditing={onPressEnter}
+              onChangeText={memoHandler}
+              value={newMemo}
+            />
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -76,6 +104,11 @@ const styles = StyleSheet.create({
   },
   memoContentWrapper: {
     marginLeft: '4%',
+    minHeight: '30%',
+    maxHeight: '65%',
+  },
+  memoContentReverse: {
+    flexDirection: 'column-reverse',
   },
   memoContent: {
     marginTop: '5%',
