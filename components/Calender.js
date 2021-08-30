@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, Alert} from 'react-native';
+import {StyleSheet, View, Alert} from 'react-native';
 import TimeTableView from './timetable/TimeTable/TimeTableView';
 import {genTimeBlock} from './timetable/utils';
 

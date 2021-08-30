@@ -2,43 +2,31 @@ import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Calender from '../components/Calender';
 import EditButton from '../components/EditButton';
+import Memo from '../components/Memo';
 import {
   StyleSheet,
   SafeAreaView,
   View,
-  Text,
-  TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native';
 
 const Schedule = () => {
   return (
-    <View style={styles.background}>
-      <SafeAreaView style={styles.wrapper}>
-        <Calender />
-        <LinearGradient
-          start={{x: 0, y: 0}}
-          end={{x: 1, y: 0}}
-          colors={['#6E52FC', '#5597F8']}
-          style={styles.linearGradient}>
-          <EditButton />
-        </LinearGradient>
-        <View style={styles.memoWrapper}>
-          <Text style={styles.memoTitle}>Memo</Text>
-          <View style={styles.memoBar} />
-          <View style={styles.memoContentWrapper}>
-            <View style={styles.memoContent}>
-              <Text style={styles.memoContentText}>20시까지 에세이 과제</Text>
-            </View>
-            <View style={styles.memoContent}>
-              <Text style={styles.memoContentText}>20시까지 에세이 과제</Text>
-            </View>
-            <TouchableOpacity style={styles.memoAddButton}>
-              <Text style={styles.memoAddButtonText}>+ 새로운 메모</Text>
-            </TouchableOpacity>
-          </View>
+    <KeyboardAvoidingView behavior={'padding'}>
+      <SafeAreaView style={styles.background}>
+        <View style={styles.wrapper}>
+          <Calender />
+          <LinearGradient
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            colors={['#6E52FC', '#5597F8']}
+            style={styles.linearGradient}>
+            <EditButton />
+          </LinearGradient>
+          <Memo />
         </View>
       </SafeAreaView>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -68,48 +56,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     //fontFamily: 'Noto Sans',
     fontWeight: 'bold',
-    fontStyle: 'normal',
-  },
-  memoWrapper: {
-    marginTop: '3%',
-    width: '100%',
-  },
-  memoTitle: {
-    color: '#FFFFFF',
-    fontSize: 20,
-    //fontFamily: 'Noto Sans',
-    fontWeight: 'bold',
-    fontStyle: 'normal',
-  },
-  memoBar: {
-    backgroundColor: '#FFFFFF',
-    opacity: 0.7,
-    marginTop: '3%',
-    width: '100%',
-    height: 1,
-  },
-  memoContentWrapper: {
-    marginLeft: '4%',
-  },
-  memoContent: {
-    marginTop: '5%',
-  },
-  memoContentText: {
-    color: '#FFFFFF',
-    fontSize: 17,
-    //fontFamily: 'Noto Sans',
-    fontWeight: '700',
-    fontStyle: 'normal',
-  },
-  memoAddButton: {
-    marginTop: '5%',
-    width: '50%',
-  },
-  memoAddButtonText: {
-    color: '#52A0F8',
-    fontSize: 17,
-    //fontFamily: 'Noto Sans',
-    fontWeight: '700',
     fontStyle: 'normal',
   },
 });

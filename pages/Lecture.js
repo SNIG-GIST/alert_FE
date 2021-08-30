@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, Text} from 'react-native-safe-area-context';
+import {SafeAreaView, Text} from 'react-native';
 
 const Lecture = () => {
   return (
