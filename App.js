@@ -65,7 +65,7 @@ const App = () => {
               }}
             />
           ),
-          tabBarStyle: {height: '11%'},
+          tabBarStyle: {height: 95},
           tabBarItemStyle: {paddingTop: 3},
           tabBarLabelStyle: {fontSize: 13},
           tabBarActiveTintColor: '#52A0F8',
