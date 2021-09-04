@@ -6,6 +6,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 
 const Memo = () => {
@@ -35,14 +36,16 @@ const Memo = () => {
   const nextId = useRef(2);
   const [newMemo, setNewMemo] = useState('');
   const addMemo = () => {
-    nextId.current += 1;
-    const memo = {
-      ...memos,
-      id: nextId.current,
-      text: newMemo,
-    };
-    setMemos(memos.concat(memo));
-    setNewMemo('');
+    if (newMemo.length !== 0) {
+      nextId.current += 1;
+      const memo = {
+        ...memos,
+        id: nextId.current,
+        text: newMemo,
+      };
+      setMemos(memos.concat(memo));
+      setNewMemo('');
+    }
   };
   const memoHandler = text => {
     setNewMemo(text);
@@ -105,13 +108,14 @@ const styles = StyleSheet.create({
   memoContentWrapper: {
     marginLeft: '4%',
     minHeight: '30%',
-    maxHeight: '65%',
+    maxHeight: Platform.OS === 'ios' ? '65%' : '45%',
   },
   memoContentReverse: {
     flexDirection: 'column-reverse',
   },
   memoContent: {
-    marginTop: '5%',
+    marginBottom: Platform.OS === 'ios' ? '0%' : '5%',
+    marginTop: Platform.OS === 'ios' ? '5%' : '0%',
   },
   memoContentText: {
     color: '#FFFFFF',
