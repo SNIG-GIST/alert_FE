@@ -6,24 +6,9 @@ Ionicons.loadFont().then();
 import Schedule from './pages/Schedule.js';
 import Lecture from './pages/Lecture.js';
 import Profile from './pages/Profile.js';
-import {SafeAreaView, View, Text, Image} from 'react-native';
+import {View} from 'react-native';
 
 const Tab = createBottomTabNavigator();
-
-const ProfileScreen = () => {
-  return (
-    <View>
-      <Text>This is Profile Page</Text>
-    </View>
-  );
-};
-const LectureScreen = () => {
-  return (
-    <SafeAreaView>
-      <Text>This is Lecture Page</Text>
-    </SafeAreaView>
-  );
-};
 
 const App = () => {
   return (
@@ -78,8 +63,8 @@ const App = () => {
             headerShown: false,
           }}
         />
-        <Tab.Screen name="Lecture" component={LectureScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="Lecture" component={Lecture} />
+        <Tab.Screen name="Profile" component={Profile} />
       </Tab.Navigator>
     </NavigationContainer>
   );

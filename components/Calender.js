@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, TouchableOpacity, Alert} from 'react-native';
+import {StyleSheet, View, Alert} from 'react-native';
 import TimeTableView from './timetable/TimeTable/TimeTableView';
 import {genTimeBlock} from './timetable/utils';
 
@@ -17,18 +17,25 @@ const Calender = () => {
       startTime: genTimeBlock('MON', 10),
       endTime: genTimeBlock('MON', 11, 30),
       location: '장진호T',
+      extra_description: '과목코드',
     },
     {
       title: '기업과 사회',
-      startTime: genTimeBlock('tue', 10),
-      endTime: genTimeBlock('tue', 11, 30),
+      startTime: genTimeBlock('TUE', 13, 30),
+      endTime: genTimeBlock('TUE', 15),
       location: '장진호T',
     },
     {
-      title: '기업',
-      startTime: genTimeBlock('WED', 10),
-      endTime: genTimeBlock('WED', 11, 30),
-      location: '장진호T',
+      title: '글쓰기',
+      startTime: genTimeBlock('THU', 12),
+      endTime: genTimeBlock('THU', 13, 30),
+      location: '최서윤T',
+    },
+    {
+      title: '컴퓨터 프로그래밍',
+      startTime: genTimeBlock('THU', 9),
+      endTime: genTimeBlock('THU', 10, 30),
+      location: '최서윤T',
     },
   ];
 
