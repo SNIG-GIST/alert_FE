@@ -8,11 +8,13 @@ import {
   SafeAreaView,
   View,
   KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 
 const Schedule = () => {
   return (
-    <KeyboardAvoidingView behavior={'padding'}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <SafeAreaView style={styles.background}>
         <View style={styles.wrapper}>
           <Calender />
