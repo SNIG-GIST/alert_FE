@@ -2,6 +2,7 @@
 
 @react-native-community/masked-view <br />
 @react-navigation/bottom-tabs <br />
+@react-navigation/stack <br />
 @react-navigation/native <br />
 moment <br />
 react-native-gesture-handler <br />
