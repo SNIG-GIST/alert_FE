@@ -1,4 +1,6 @@
 # alert_FE
+npm: 7.18.1 <br />
+node: 16.4.0 <br />
 
 @react-native-community/masked-view <br />
 @react-navigation/bottom-tabs <br />
