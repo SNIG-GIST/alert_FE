@@ -6,6 +6,7 @@ import {
   View,
   Text,
   TouchableOpacity,
+  Platform,
 } from 'react-native';
 import EditButton from '../../components/EditButton';
 
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 60,
     color: 'white',
     letterSpacing: 5,
-    marginTop: '55%',
+    marginTop: Platform.OS === 'ios' ? '55%' : '35%',
     marginBottom: '20%',
   },
   Button: {

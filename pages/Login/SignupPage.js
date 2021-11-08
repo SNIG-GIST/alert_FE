@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  Platform,
 } from 'react-native';
 
 const SignupPage = ({navigation}) => {
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   loginButton: {
     width: '70%',
     height: '6%',
-    marginTop: '80%',
+    marginTop: Platform.OS === 'ios' ? '80%' : '30%',
   },
   linearGradient: {
     alignItems: 'center',

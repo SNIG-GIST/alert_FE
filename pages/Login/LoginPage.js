@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   TextInput,
+  Platform,
 } from 'react-native';
 
 const LoginPage = ({navigation}) => {
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
   loginButton: {
     width: '70%',
     height: '6%',
-    marginTop: '100%',
+    marginTop: Platform.OS === 'ios' ? '100%' : '55%',
   },
   linearGradient: {
     alignItems: 'center',
