@@ -11,3 +11,4 @@ react-native-gesture-handler <br />
 react-native-linear-gradient <br />
 react-native-safe-area-context <br />
 react-native-screens <br />
+react-native-vector-icons <br />

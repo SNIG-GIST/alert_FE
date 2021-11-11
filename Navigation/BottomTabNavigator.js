@@ -2,9 +2,9 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 Ionicons.loadFont().then();
-import Schedule from '../pages/Schedule.js';
-import Lecture from '../pages/Lecture.js';
-import Profile from '../pages/Profile.js';
+import SchedulePage from '../pages/SchedulePage.js';
+import LecturePage from '../pages/LecturePage.js';
+import ProfilePage from '../pages/ProfilePage.js';
 import {View} from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -56,13 +56,13 @@ const BottomTabNavigator = () => {
       })}>
       <Tab.Screen
         name="Schedule"
-        component={Schedule}
+        component={SchedulePage}
         options={{
           headerShown: false,
         }}
       />
-      <Tab.Screen name="Lecture" component={Lecture} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Lecture" component={LecturePage} />
+      <Tab.Screen name="Profile" component={ProfilePage} />
     </Tab.Navigator>
   );
 };
