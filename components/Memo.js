@@ -8,11 +8,9 @@ import {
   TouchableOpacity,
   Platform,
 } from 'react-native';
+import {clearLocalStorage} from '../modules/localStorage';
 
-const Memo = () => {
-  const onPressEnter = () => {
-    addMemo();
-  };
+const Memo = ({valueLocalStorage, GetLocalStorage, SetLocalStorage}) => {
   const MemoList = ({memo, removeMemo}) => {
     return (
       <TouchableOpacity
@@ -50,9 +48,15 @@ const Memo = () => {
   const memoHandler = text => {
     setNewMemo(text);
   };
+  const onPressEnter = () => {
+    addMemo();
+    SetLocalStorage('key', 'Hello jaehong');
+  };
   const removeMemo = id => {
     setMemos(memos.filter(memo => memo.id !== id));
     nextId.current -= 1;
+    console.log(GetLocalStorage('key'));
+    console.log(valueLocalStorage);
   };
 
   return (

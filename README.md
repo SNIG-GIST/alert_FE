@@ -12,3 +12,7 @@ react-native-linear-gradient <br />
 react-native-safe-area-context <br />
 react-native-screens <br />
 react-native-vector-icons <br />
+@react-native-community/async-storage <br />
+react-redux <br />
+redux <br />
+redux-saga <br />
