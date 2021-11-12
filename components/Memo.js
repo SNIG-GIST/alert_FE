@@ -1,4 +1,5 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useCallback} from 'react';
+import {useFocusEffect} from '@react-navigation/native';
 import {
   StyleSheet,
   ScrollView,
@@ -8,55 +9,61 @@ import {
   TouchableOpacity,
   Platform,
 } from 'react-native';
-import {clearLocalStorage} from '../modules/localStorage';
+import {uuidv4} from '../lib/uuid';
+import {
+  GetLocalStorage,
+  SetLocalStorage,
+  GetAllLocalStorage,
+  RemoveLocalStorage,
+  ClearLocalStorage,
+} from '../lib/LocalStorage';
 
-const Memo = ({valueLocalStorage, GetLocalStorage, SetLocalStorage}) => {
+const Memo = () => {
+  const [isFocus, setIsFocus] = useState(true);
+  const [local, setLocal] = useState([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      const fetchLocal = async () => {
+        try {
+          const all = await GetAllLocalStorage();
+          if (all) setLocal(all);
+          setIsFocus(false);
+        } catch (e) {
+          console.log(e);
+        }
+      };
+      if (isFocus) fetchLocal();
+      if (isFocus)
+        return () => {
+          setIsFocus(false);
+        };
+    }, [local]),
+  );
+
   const MemoList = ({memo, removeMemo}) => {
     return (
       <TouchableOpacity
         style={styles.memoContent}
-        onLongPress={() => removeMemo(memo.id)}>
-        <Text style={styles.memoContentText}>{memo.text}</Text>
+        onLongPress={() => removeMemo(memo[0])}>
+        <Text style={styles.memoContentText}>{memo[1]}</Text>
       </TouchableOpacity>
     );
   };
 
-  const [memos, setMemos] = useState([
-    {
-      id: 1,
-      text: '에세이 과제',
-    },
-    {
-      id: 2,
-      text: '화학 과제',
-    },
-  ]);
-  const nextId = useRef(2);
-  const [newMemo, setNewMemo] = useState('');
-  const addMemo = () => {
-    if (newMemo.length !== 0) {
-      nextId.current += 1;
-      const memo = {
-        ...memos,
-        id: nextId.current,
-        text: newMemo,
-      };
-      setMemos(memos.concat(memo));
-      setNewMemo('');
+  const [text, setText] = useState('');
+  const addMemo = async () => {
+    if (text.length !== 0) {
+      setText('');
+      SetLocalStorage(uuidv4(), text);
+      const all = await GetAllLocalStorage();
+      setLocal(all);
     }
   };
-  const memoHandler = text => {
-    setNewMemo(text);
-  };
-  const onPressEnter = () => {
-    addMemo();
-    SetLocalStorage('key', 'Hello jaehong');
-  };
-  const removeMemo = id => {
-    setMemos(memos.filter(memo => memo.id !== id));
-    nextId.current -= 1;
-    console.log(GetLocalStorage('key'));
-    console.log(valueLocalStorage);
+  const removeMemo = async uuid => {
+    await RemoveLocalStorage(uuid);
+    const all = await GetAllLocalStorage();
+    setLocal(all);
   };
 
   return (
@@ -65,7 +72,7 @@ const Memo = ({valueLocalStorage, GetLocalStorage, SetLocalStorage}) => {
       <View style={styles.memoBar} />
       <ScrollView style={styles.memoContentWrapper}>
         <View style={styles.memoContentReverse}>
-          {memos.map((memo, index) => (
+          {local.map((memo, index) => (
             <MemoList
               memo={memo}
               removeMemo={removeMemo}
@@ -79,9 +86,10 @@ const Memo = ({valueLocalStorage, GetLocalStorage, SetLocalStorage}) => {
               placeholder="+ 새로운 메모"
               placeholderTextColor="#52A0F8"
               autoCorrect={false}
-              onSubmitEditing={onPressEnter}
-              onChangeText={memoHandler}
-              value={newMemo}
+              autoCapitalize="none"
+              onSubmitEditing={() => addMemo()}
+              onChangeText={e => setText(e)}
+              value={text}
             />
           </View>
         </View>

@@ -3,7 +3,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import Calender from '../components/Calender';
 import EditButton from '../components/EditButton';
 import Memo from '../components/Memo';
-import MemoContainer from '../containers/MemoContainer';
 import {
   StyleSheet,
   SafeAreaView,
@@ -26,7 +25,7 @@ const SchedulePage = () => {
             style={styles.linearGradient}>
             <EditButton />
           </LinearGradient>
-          <MemoContainer />
+          <Memo />
         </View>
       </SafeAreaView>
     </KeyboardAvoidingView>
