@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
 
-const MyLecture = () => {
+const LectureItem = () => {
   return (
     <View style={styles.MyLectureWrapper}>
       <View style={styles.MyLectureData}>
@@ -13,7 +13,7 @@ const MyLecture = () => {
         </Text>
       </View>
       <View style={styles.MyLectureDelete}>
-        <Text style={styles.MyLectureDeleteText}></Text>
+        <Text style={styles.MyLectureDeleteText}>View</Text>
       </View>
     </View>
   );
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginBottom: '5%',
   },
   MyLectureData: {
-    backgroundColor: '#1B222E',
+    backgroundColor: '#2F3C51',
     padding: '3%',
     width: '78%',
     justifyContent: 'center',
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyLecture;
+export default LectureItem;

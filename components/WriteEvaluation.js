@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 
-const MyLecture = () => {
+const Evaluation = () => {
   return (
     <View style={styles.MyLectureWrapper}>
       <View style={styles.MyLectureData}>
@@ -13,7 +13,7 @@ const MyLecture = () => {
         </Text>
       </View>
       <View style={styles.MyLectureDelete}>
-        <Text style={styles.MyLectureDeleteText}></Text>
+        <Text style={styles.MyLectureDeleteText}>Write</Text>
       </View>
     </View>
   );
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyLecture;
+export default Evaluation;
