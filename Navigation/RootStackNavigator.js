@@ -9,6 +9,7 @@ import BottomTabNavigator from './BottomTabNavigator';
 import StartingPage from '../pages/Login/StartingPage';
 import LoginPage from '../pages/Login/LoginPage';
 import SignupPage from '../pages/Login/SignupPage';
+import LectureDetail from '../pages/Lecture/LectureDetail';
 
 const RootStack = createStackNavigator();
 
@@ -22,9 +23,9 @@ const RootStackNavigator = () => {
           options={{headerShown: false}}
         />
         <RootStack.Screen
-            name="StartingPage"
-            component={StartingPage}
-            options={{headerShown: false}}
+          name="StartingPage"
+          component={StartingPage}
+          options={{headerShown: false}}
         />
         <RootStack.Screen
           name="Login"
@@ -34,6 +35,11 @@ const RootStackNavigator = () => {
         <RootStack.Screen
           name="SignUp"
           component={SignupPage}
+          options={{headerShown: false}}
+        />
+        <RootStack.Screen
+          name="LectureDetail"
+          component={LectureDetail}
           options={{headerShown: false}}
         />
       </RootStack.Navigator>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import LectureItem from '../components/LectureItem';
-import WriteModal from '../components/WriteModal';
+import LectureItem from './LectureItem';
+import WriteModal from '../../components/WriteModal';
 import {
   StyleSheet,
   SafeAreaView,
@@ -30,40 +30,37 @@ const LecturePage = () => {
             style={styles.input}
             placeholder="Search..."
             keyboardType="default"
-            placeholderTextColor= '#000000'
-            />
+            placeholderTextColor="#000000"
+          />
           <LinearGradient
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
             colors={['#6E52FC', '#5597F8']}
             style={styles.linearGradientOrder}>
             <TouchableOpacity>
-              <Text style={styles.editButtonText}>
-                 Order by
-             </Text>
+              <Text style={styles.editButtonText}>Order by</Text>
             </TouchableOpacity>
-           
           </LinearGradient>
           <ScrollView style={styles.ScrollLecture}>
-              <TouchableOpacity>
-                <TouchableWithoutFeedback>
-                  <View>
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                    <LectureItem />
-                  </View>
-                </TouchableWithoutFeedback>
-              </TouchableOpacity>
-            </ScrollView>
+            <TouchableOpacity>
+              <TouchableWithoutFeedback>
+                <View>
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                  <LectureItem />
+                </View>
+              </TouchableWithoutFeedback>
+            </TouchableOpacity>
+          </ScrollView>
           <LinearGradient
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
@@ -76,9 +73,9 @@ const LecturePage = () => {
             </TouchableOpacity>
           </LinearGradient>
           <WriteModal
-              modalVisible={modalVisible}
-              setModalVisible={setModalVisible}
-            />
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+          />
         </View>
       </SafeAreaView>
     </KeyboardAvoidingView>
@@ -105,7 +102,7 @@ const styles = StyleSheet.create({
     marginTop: '3.5%',
     width: '35%',
     height: '4%',
-    marginBottom:'4%',
+    marginBottom: '4%',
   },
   linearGradientOrder: {
     alignSelf: 'flex-end',
@@ -124,18 +121,21 @@ const styles = StyleSheet.create({
   },
   input: {
     height: '6%',
-    width:'100%',
+    width: '100%',
     alignSelf: 'center',
     color: '#FFFFFF',
     backgroundColor: '#FFFFFF',
     fontWeight: 'bold',
     borderRadius: 10,
     opacity: 0.85,
-    marginTop:'5%',
+    marginTop: '5%',
+    marginBottom: '2%',
+    paddingVertical: '1%',
+    paddingLeft: '5%',
   },
   ScrollLecture: {
-    marginTop: '3%',
-  }
+    marginTop: '7%',
+  },
 });
 
 export default LecturePage;

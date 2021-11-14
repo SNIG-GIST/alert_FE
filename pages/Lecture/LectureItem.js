@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const LectureItem = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.MyLectureWrapper}>
       <View style={styles.MyLectureData}>
@@ -12,9 +14,13 @@ const LectureItem = () => {
           진규호 / 월 16:00~17:30/ 수 16:00~17:30
         </Text>
       </View>
-      <View style={styles.MyLectureDelete}>
-        <Text style={styles.MyLectureDeleteText}>View</Text>
-      </View>
+      <TouchableOpacity
+        style={styles.MyLectureDelete}
+        onPress={() => navigation.navigate('LectureDetail')}>
+        <View>
+          <Text style={styles.MyLectureDeleteText}>View</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
   MyLectureData: {
     backgroundColor: '#2F3C51',
     padding: '3%',
-    width: '78%',
+    width: '79%',
     justifyContent: 'center',
     marginLeft: '3.5%',
   },
