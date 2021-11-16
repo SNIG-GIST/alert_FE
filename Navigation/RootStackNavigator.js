@@ -27,6 +27,7 @@ const RootStackNavigator = () => {
           component={StartingPage}
           options={{headerShown: false}}
         />
+
         <RootStack.Screen
           name="Login"
           component={LoginPage}

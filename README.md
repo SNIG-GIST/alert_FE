@@ -16,3 +16,4 @@ react-native-vector-icons <br />
 react-redux <br />
 redux <br />
 redux-saga <br />
+react-native-star-view <br />
