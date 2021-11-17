@@ -15,14 +15,16 @@ export const resetErrorInfo = () => ({
   type: RESET_ERROR_INFO,
 });
 
-const initialState = {};
+const initialState = {
+  'account/SEND_MAIL': false,
+};
 
 export default function errorReducer(state = initialState, action) {
   switch (action.type) {
     case ALERT_ERROR:
       return {
         ...state,
-        [action.actionType]: action.payload.state,
+        [action.actionType]: action.payload,
       };
     case ALERT_SUCCESS:
       return {

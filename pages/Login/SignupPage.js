@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   StyleSheet,
@@ -8,9 +8,20 @@ import {
   TouchableOpacity,
   TextInput,
   Platform,
+  Alert,
 } from 'react-native';
 
-const SignupPage = ({navigation}) => {
+const SignupPage = ({
+  navigation,
+  errorSendMail,
+  errorSignUp,
+  SendMail,
+  SignUp,
+}) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [cert, setCert] = useState('');
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.headerWrapper}>
@@ -20,17 +31,35 @@ const SignupPage = ({navigation}) => {
         <Text style={styles.headerTitle}>회원 가입</Text>
       </View>
       <Text style={styles.title}>이름</Text>
-      <TextInput style={styles.nameInput} />
+      <TextInput
+        style={styles.nameInput}
+        onChangeText={text => setName(text)}
+      />
       <Text style={styles.title}>학교 이메일</Text>
-      <TextInput style={styles.emailInput} placeholder="test@gm.gist.ac.kr" />
+      <TextInput
+        style={styles.emailInput}
+        onChangeText={text => setEmail(text)}
+        placeholder="test@gm.gist.ac.kr"
+      />
       <Text style={styles.title}>인증코드 입력</Text>
       <View style={styles.verifyWrapper}>
-        <TextInput style={styles.verifyInput} />
-        <TouchableOpacity style={styles.verifyButton}>
+        <TextInput
+          style={styles.verifyInput}
+          onChangeText={text => setCert(text)}
+        />
+        <TouchableOpacity
+          style={styles.verifyButton}
+          onPress={() => {
+            SendMail(email);
+          }}>
           <Text style={styles.verifyButtonText}>전송</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => {
+          SignUp(name, email, cert);
+        }}>
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}

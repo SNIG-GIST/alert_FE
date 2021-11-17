@@ -55,7 +55,7 @@ const Memo = () => {
   const addMemo = async () => {
     if (text.length !== 0) {
       setText('');
-      SetLocalStorage(uuidv4(), text);
+      await SetLocalStorage(uuidv4(), text);
       const all = await GetAllLocalStorage();
       setLocal(all);
     }
