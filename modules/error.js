@@ -22,7 +22,7 @@ export default function errorReducer(state = initialState, action) {
     case ALERT_ERROR:
       return {
         ...state,
-        [action.actionType]: action.payload.state,
+        [action.actionType]: action.payload,
       };
     case ALERT_SUCCESS:
       return {

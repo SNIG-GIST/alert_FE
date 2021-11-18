@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   StyleSheet,
@@ -8,27 +8,54 @@ import {
   TouchableOpacity,
   TextInput,
   Platform,
+  Alert,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-const LoginPage = ({navigation}) => {
+const LoginPage = ({SendMail, LogIn}) => {
+  const [email, setEmail] = useState('');
+  const [cert, setCert] = useState('');
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.headerWrapper}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.navigate('StartingPage')}>
           <Text style={styles.backButtonText}>{'<'}</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>로그인</Text>
       </View>
       <Text style={styles.title}>학교 이메일</Text>
-      <TextInput style={styles.emailInput} placeholder="test@gm.gist.ac.kr" />
+      <TextInput
+        style={styles.emailInput}
+        placeholder="test@gm.gist.ac.kr"
+        onChangeText={text => setEmail(text)}
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
       <Text style={styles.title}>인증코드 입력</Text>
       <View style={styles.verifyWrapper}>
-        <TextInput style={styles.verifyInput} />
-        <TouchableOpacity style={styles.verifyButton}>
+        <TextInput
+          style={styles.verifyInput}
+          onChangeText={text => setCert(text)}
+          autoCapitalize="none"
+          autoCorrect={false}
+        />
+        <TouchableOpacity
+          style={styles.verifyButton}
+          onPress={() => {
+            if (email.length >= 5) SendMail(email);
+            else Alert.alert('이메일을 입력해주세요');
+          }}>
           <Text style={styles.verifyButtonText}>전송</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity
+        style={styles.loginButton}
+        onPress={() => {
+          if (email.length >= 5 && cert.length >= 1) LogIn(email, cert);
+          else Alert.alert('이메일, 인증코드를 모두 입력해주세요');
+        }}>
         <LinearGradient
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
@@ -82,6 +109,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 18,
     marginTop: '5%',
+    fontSize: 13,
+    paddingTop: Platform.OS === 'android' ? '6%' : '0%',
   },
   verifyWrapper: {
     flexDirection: 'row',
@@ -94,6 +123,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingLeft: 18,
     marginTop: '5%',
+    fontSize: 13,
+    paddingTop: Platform.OS === 'android' ? '6%' : '0%',
   },
   verifyButton: {
     width: '18%',

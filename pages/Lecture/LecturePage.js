@@ -14,12 +14,18 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
 } from 'react-native';
+import {useDispatch} from 'react-redux';
+import {tokenValidate} from '../../modules/account';
+import {GetLocalStorage} from '../../lib/LocalStorage';
 
 const LecturePage = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const pressButton = () => {
     setModalVisible(true);
   };
+
+  const dispatch = useDispatch();
+  const tokenValidation = userToken => dispatch(tokenValidate(userToken));
 
   return (
     <KeyboardAvoidingView
@@ -37,7 +43,11 @@ const LecturePage = () => {
             end={{x: 1, y: 0}}
             colors={['#6E52FC', '#5597F8']}
             style={styles.linearGradientOrder}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={async () => {
+                const token = await GetLocalStorage('userToken');
+                tokenValidation(token);
+              }}>
               <Text style={styles.editButtonText}>Order by</Text>
             </TouchableOpacity>
           </LinearGradient>
