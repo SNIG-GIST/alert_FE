@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {
   StyleSheet,
@@ -7,10 +7,35 @@ import {
   Text,
   TouchableOpacity,
   Platform,
+  Alert,
 } from 'react-native';
 import EditButton from '../../components/EditButton';
+import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {tokenValidate} from '../../modules/account';
+import {GetLocalStorage} from '../../lib/LocalStorage';
 
-const StartingPage = ({navigation}) => {
+const StartingPage = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const tokenValidation = userToken => dispatch(tokenValidate(userToken));
+
+  const {tokenError, tokenLoading} = useSelector((state, index) => ({
+    tokenError: state.errorReducer['account/TOKEN_VALIDATE'],
+    tokenLoading: state.loadingReducer['account/TOKEN_VALIDATE'],
+  }));
+  useEffect(() => {
+    const fn = async () => {
+      const token = await GetLocalStorage('userToken');
+      tokenValidation(token);
+      await console.log(tokenError);
+    };
+    fn();
+    if (tokenError === false) {
+      navigation.navigate('Schedule_BottomTab');
+    }
+  }, [tokenError]);
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <Text style={styles.title}>SNIG</Text>

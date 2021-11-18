@@ -22,7 +22,7 @@ const LOG_IN = 'account/LOG_IN';
 const LOG_IN_SUCCESS = 'account/LOG_IN_SUCCESS';
 const LOG_IN_FAILURE = 'account/LOG_IN_FAILURE';
 
-const TOKEN_VALIDATE = 'account/TOKEN_VALID';
+const TOKEN_VALIDATE = 'account/TOKEN_VALIDATE';
 const TOKEN_VALIDATE_SUCCESS = 'account/TOKEN_VALID_SUCCESS';
 const TOKEN_VALIDATE_FAILURE = 'account/TOKEN_VALID_FAILURE';
 

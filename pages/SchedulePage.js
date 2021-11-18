@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Calender from '../components/Calender';
 import EditButton from '../components/EditButton';
@@ -9,6 +9,7 @@ import {
   View,
   KeyboardAvoidingView,
   Platform,
+  Alert,
 } from 'react-native';
 
 const SchedulePage = () => {

@@ -145,7 +145,6 @@
 				9BE7E5EECD1D50F8B8D9342C /* Pods-alert_FE-alert_FETests.debug.xcconfig */,
 				F66AF46727BE37DCC28B474A /* Pods-alert_FE-alert_FETests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
