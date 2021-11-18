@@ -15,9 +15,7 @@ export const resetErrorInfo = () => ({
   type: RESET_ERROR_INFO,
 });
 
-const initialState = {
-  'account/SEND_MAIL': false,
-};
+const initialState = {};
 
 export default function errorReducer(state = initialState, action) {
   switch (action.type) {

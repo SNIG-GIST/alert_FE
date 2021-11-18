@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Platform,
 } from 'react-native';
-import {uuidv4} from '../lib/uuid';
+import {uuidv4} from '../lib/etc';
 import {
   GetLocalStorage,
   SetLocalStorage,

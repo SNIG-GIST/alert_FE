@@ -7,7 +7,7 @@ Ionicons.loadFont().then();
 
 import BottomTabNavigator from './BottomTabNavigator';
 import StartingPage from '../pages/Login/StartingPage';
-import LoginPage from '../pages/Login/LoginPage';
+import LoginContainer from '../containers/LoginContainer';
 import SignupContainer from '../containers/SignUpContainer';
 import LectureDetail from '../pages/Lecture/LectureDetail';
 
@@ -16,7 +16,7 @@ const RootStack = createStackNavigator();
 const RootStackNavigator = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="StartingPage">
+      <RootStack.Navigator initialRouteName="Schedule_BottomTab">
         <RootStack.Screen
           name="Schedule_BottomTab"
           component={BottomTabNavigator}
@@ -30,7 +30,7 @@ const RootStackNavigator = () => {
 
         <RootStack.Screen
           name="Login"
-          component={LoginPage}
+          component={LoginContainer}
           options={{headerShown: false}}
         />
         <RootStack.Screen

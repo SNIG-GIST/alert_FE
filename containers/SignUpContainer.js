@@ -4,10 +4,6 @@ import {sendMail, signUp} from '../modules/account';
 import SignupPage from '../pages/Login/SignupPage';
 
 const SignupContainer = () => {
-  const {errorSendMail, errorSignUp} = useSelector((state, index) => ({
-    errorSendMail: state.errorReducer['account/SEND_MAIL'],
-    errorSignUp: state.errorReducer['account/SIGN_UP'],
-  }));
 
   const dispatch = useDispatch();
   const SendMail = email => dispatch(sendMail(email, false));
@@ -16,8 +12,6 @@ const SignupContainer = () => {
 
   return (
     <SignupPage
-      errorSendMail={errorSendMail}
-      errorSignUp={errorSignUp}
       SendMail={SendMail}
       SignUp={SignUp}
     />

@@ -10,22 +10,18 @@ import {
   Platform,
   Alert,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-const SignupPage = ({
-  navigation,
-  errorSendMail,
-  errorSignUp,
-  SendMail,
-  SignUp,
-}) => {
+const SignupPage = ({SendMail, SignUp}) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [cert, setCert] = useState('');
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={styles.headerWrapper}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity onPress={() => navigation.navigate('StartingPage')}>
           <Text style={styles.backButtonText}>{'<'}</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>회원 가입</Text>
@@ -34,23 +30,30 @@ const SignupPage = ({
       <TextInput
         style={styles.nameInput}
         onChangeText={text => setName(text)}
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <Text style={styles.title}>학교 이메일</Text>
       <TextInput
         style={styles.emailInput}
         onChangeText={text => setEmail(text)}
         placeholder="test@gm.gist.ac.kr"
+        autoCapitalize="none"
+        autoCorrect={false}
       />
       <Text style={styles.title}>인증코드 입력</Text>
       <View style={styles.verifyWrapper}>
         <TextInput
           style={styles.verifyInput}
           onChangeText={text => setCert(text)}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <TouchableOpacity
           style={styles.verifyButton}
           onPress={() => {
-            SendMail(email);
+            if (email.length >= 5) SendMail(email);
+            else Alert.alert('이메일을 입력해주세요');
           }}>
           <Text style={styles.verifyButtonText}>전송</Text>
         </TouchableOpacity>
@@ -58,7 +61,9 @@ const SignupPage = ({
       <TouchableOpacity
         style={styles.loginButton}
         onPress={() => {
-          SignUp(name, email, cert);
+          if (name.length >= 1 && email.length >= 5 && cert.length >= 1)
+            SignUp(name, email, cert);
+          else Alert.alert('이름, 이메일, 인증코드를 모두 입력해주세요');
         }}>
         <LinearGradient
           start={{x: 0, y: 0}}
@@ -111,6 +116,8 @@ const styles = StyleSheet.create({
     width: '80%',
     backgroundColor: 'white',
     borderRadius: 10,
+    fontSize: 13,
+    paddingTop: Platform.OS === 'android' ? '6%' : '0%',
     paddingLeft: 18,
     marginTop: '5%',
   },
@@ -119,6 +126,8 @@ const styles = StyleSheet.create({
     width: '80%',
     backgroundColor: 'white',
     borderRadius: 10,
+    fontSize: 13,
+    paddingTop: Platform.OS === 'android' ? '6%' : '0%',
     paddingLeft: 18,
     marginTop: '5%',
   },
@@ -131,6 +140,8 @@ const styles = StyleSheet.create({
     width: '54%',
     backgroundColor: 'white',
     borderRadius: 10,
+    fontSize: 13,
+    paddingTop: Platform.OS === 'android' ? '6%' : '0%',
     paddingLeft: 18,
     marginTop: '5%',
   },
