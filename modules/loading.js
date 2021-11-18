@@ -14,7 +14,9 @@ export const resetLoadingStatus = () => ({
   type: RESET_LOADING_STATUS,
 });
 
-const initialState = {};
+const initialState = {
+  'account/TOKEN_VALIDATE': true,
+};
 
 export default function loadingReducer(state = initialState, action) {
   switch (action.type) {

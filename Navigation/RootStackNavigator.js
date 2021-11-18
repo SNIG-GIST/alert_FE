@@ -16,7 +16,7 @@ const RootStack = createStackNavigator();
 const RootStackNavigator = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator initialRouteName="Schedule_BottomTab">
+      <RootStack.Navigator initialRouteName="StartingPage">
         <RootStack.Screen
           name="Schedule_BottomTab"
           component={BottomTabNavigator}

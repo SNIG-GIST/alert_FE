@@ -15,14 +15,18 @@ export const resetErrorInfo = () => ({
   type: RESET_ERROR_INFO,
 });
 
-const initialState = {};
+const initialState = {
+  'account/TOKEN_VALIDATE': true,
+  'account/LOG_IN': true,
+};
 
 export default function errorReducer(state = initialState, action) {
   switch (action.type) {
     case ALERT_ERROR:
       return {
         ...state,
-        [action.actionType]: action.payload,
+        payload: action.payload,
+        [action.actionType]: true,
       };
     case ALERT_SUCCESS:
       return {
