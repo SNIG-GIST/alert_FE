@@ -16,8 +16,8 @@ export const resetErrorInfo = () => ({
 });
 
 const initialState = {
-  'account/TOKEN_VALIDATE': true,
-  'account/LOG_IN': true,
+  'account/TOKEN_VALIDATE': null,
+  'account/LOG_IN': null,
 };
 
 export default function errorReducer(state = initialState, action) {

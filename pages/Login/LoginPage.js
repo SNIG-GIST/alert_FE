@@ -110,7 +110,6 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     marginTop: '5%',
     fontSize: 13,
-    paddingTop: Platform.OS === 'android' ? '6%' : '0%',
   },
   verifyWrapper: {
     flexDirection: 'row',
@@ -124,7 +123,6 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     marginTop: '5%',
     fontSize: 13,
-    paddingTop: Platform.OS === 'android' ? '6%' : '0%',
   },
   verifyButton: {
     width: '18%',
