@@ -28,7 +28,6 @@ const StartingPage = () => {
     const fn = async () => {
       const token = await GetLocalStorage('userToken');
       tokenValidation(token);
-      await console.log(tokenError);
     };
     fn();
     if (tokenError === false) {
