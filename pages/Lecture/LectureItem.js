@@ -2,17 +2,13 @@ import React, {useState} from 'react';
 import {View, StyleSheet, Button, TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-const LectureItem = () => {
+const LectureItem = ({description, title, uuid}) => {
   const navigation = useNavigation();
   return (
     <View style={styles.MyLectureWrapper}>
       <View style={styles.MyLectureData}>
-        <Text style={styles.MyLectureDataTitle}>
-          EB2753-01/기술 벤처 창업론
-        </Text>
-        <Text style={styles.MyLectureDataText}>
-          진규호 / 월 16:00~17:30/ 수 16:00~17:30
-        </Text>
+        <Text style={styles.MyLectureDataTitle}>{title}</Text>
+        <Text style={styles.MyLectureDataText}>{description}</Text>
       </View>
       <TouchableOpacity
         style={styles.MyLectureDelete}

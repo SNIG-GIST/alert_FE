@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import LectureList from './LectureList';
+import LectureListContainer from '../../containers/LectureListContainer';
 import WriteModal from '../../components/WriteModal';
 import {
   StyleSheet,
@@ -41,7 +41,7 @@ const LecturePage = () => {
               <Text style={styles.editButtonText}>Order by</Text>
             </TouchableOpacity>
           </LinearGradient>
-          <LectureList />
+          <LectureListContainer />
           <LinearGradient
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}

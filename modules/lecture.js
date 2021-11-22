@@ -7,7 +7,7 @@ const GET_LECTURE_SEARCH = 'lecture/GET_LECTURE_SEARCH';
 const GET_LECTURE_SEARCH_SUCCESS = 'lecture/GET_LECTURE_SEARCH_SUCCESS';
 const GET_LECTURE_SEARCH_FAILURE = 'lecture/GET_LECTURE_SEARCH_FAILURE';
 
-const lectureSearch = (
+export const lectureSearch = (
   userToken,
   year,
   semester,
