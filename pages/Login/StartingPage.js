@@ -14,11 +14,32 @@ import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {tokenValidate} from '../../modules/account';
 import {GetLocalStorage} from '../../lib/LocalStorage';
+import {lectureSearch} from '../../modules/lecture';
 
 const StartingPage = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const tokenValidation = userToken => dispatch(tokenValidate(userToken));
+  const LectureSearch = (
+    userToken,
+    year,
+    semester,
+    day,
+    department,
+    keyword,
+    start_idx,
+  ) =>
+    dispatch(
+      lectureSearch(
+        userToken,
+        year,
+        semester,
+        day,
+        department,
+        keyword,
+        start_idx,
+      ),
+    );
 
   const {tokenError, tokenLoading} = useSelector((state, index) => ({
     tokenError: state.errorReducer['account/TOKEN_VALIDATE'],
@@ -28,7 +49,7 @@ const StartingPage = () => {
     const fn = async () => {
       const token = await GetLocalStorage('userToken');
       tokenValidation(token);
-      await console.log(tokenError);
+      LectureSearch(token, 2021, 2, '', '', '', 0);
     };
     fn();
     if (tokenError === false) {
